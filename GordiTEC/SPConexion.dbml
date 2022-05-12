@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Cafeteria" Class="SPConexionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-89F36QFK\TBD_CSR;Initial Catalog=Cafeteria;User ID=Sa" SettingsObjectName="GordiTEC.Properties.Settings" SettingsPropertyName="CafeteriaConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.insertarCaja" Method="insertarCaja">
+    <Parameter Name="Monto" Parameter="monto" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertarArticulosTicket" Method="insertarArticulosTicket">
+    <Parameter Name="idProducto" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idTicket" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Cantidad" Parameter="cantidad" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.mostrarGorditasCompleto" Method="mostrarGorditasCompleto">
+    <ElementType Name="mostrarGorditasCompletoResult">
+      <Column Name="[Codigo producto]" Member="Codigo_producto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Nombre del producto]" Member="Nombre_del_producto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Guiso" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Precio de venta]" Member="Precio_de_venta" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.mostrarNombreYMatricula" Method="mostrarNombreYMatricula">
+    <Parameter Name="res" Type="System.String" DbType="VarChar(60)" Direction="InOut" />
+    <Parameter Name="resA" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <ElementType Name="mostrarNombreYMatriculaResult">
+      <Column Name="nombreEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.iniciarSesion" Method="iniciarSesion">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(60)" />
+    <Parameter Name="Contraseña" Parameter="contraseña" Type="System.String" DbType="VarChar(60)" />
+    <Parameter Name="res" Type="System.String" DbType="VarChar(60)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertarTicketUno" Method="insertarTicketUno">
+    <Parameter Name="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ultimoTicket" Method="ultimoTicket">
+    <ElementType Name="ultimoTicketResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.mostrarTicketDos" Method="mostrarTicketDos">
+    <Parameter Name="idTicket" Type="System.Int32" DbType="Int" />
+    <ElementType Name="mostrarTicketDosResult">
+      <Column Name="Ticket" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Producto" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Guiso" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Decimal(21,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.mostrarTotal" Method="mostrarTotal">
+    <ElementType Name="mostrarTotalResult">
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.mostrarTicketTres" Method="mostrarTicketTres">
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="montoEntregado" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="Cambio" Parameter="cambio" Type="System.Decimal" DbType="Decimal(10,2)" />
+    <Parameter Name="idTicket" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.mostrarCorte" Method="mostrarCorte">
+    <Parameter Name="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Fecha" Parameter="fecha" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="mostrarCorteResult">
+      <Column Name="Codigo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Guiso" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Decimal(38,2)" CanBeNull="true" />
+      <Column Name="[Nombre empleado]" Member="Nombre_empleado" Type="System.String" DbType="VarChar(92) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertarEmpleados" Method="insertarEmpleados">
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="App" Parameter="app" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Apm" Parameter="apm" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contraseña" Parameter="contraseña" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Permiso" Parameter="permiso" Type="System.String" DbType="Char(2)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.mostrarEmpleados" Method="mostrarEmpleados">
+    <ElementType Name="mostrarEmpleadosResult">
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="appEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="apmEmpleado" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Contraseña" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Permiso" Type="System.String" DbType="Char(2) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.eliminarEmpleados" Method="eliminarEmpleados">
+    <Parameter Name="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
